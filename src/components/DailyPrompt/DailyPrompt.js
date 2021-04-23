@@ -64,6 +64,10 @@ class DailyPrompt extends Component {
     })
   }
 
+  refreshPage() {
+    window.location.reload(false);
+  }
+
   render() {
     return (
       <div className='prompt'>
@@ -74,6 +78,9 @@ class DailyPrompt extends Component {
           <br />
           <img src={this.state.gif} alt='gif' />
         </h3>
+        <button onClick={this.refreshPage}>
+          I'm not feeling inspired. New prompt please!
+        </button>
         <AddPost />
       </div>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 import AppContext from '../../AppContext';
+import config from '../../config';
 
 class Login extends Component {
   static contextType = AppContext;
@@ -11,9 +12,36 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    localStorage.status = 'valid'
-    this.context.setStatus('valid')
-    this.props.history.push('/collection')
+    const { email, password } = e.target
+    const post = {
+      email: email.value,
+      password: password.value
+    }
+    this.setState({ error: null})
+    fetch(config.API_ENDPOINT + '/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(post),
+      headers: {
+        'content-type': 'application/json',
+      }
+    })
+      .then (res => {
+        if (!res.ok){
+          return res.json().then(error => {
+            throw error 
+          })
+        }
+        return res.json()
+      })
+      .then(data => {
+        localStorage.status = 'valid'
+        localStorage.authToken = data.authToken
+        this.context.setStatus('valid')
+        this.props.history.push('/collection')
+      })
+      .catch(error => {
+        this.setState({ error })
+      })
   };
 
   handleClickCancel = () => {
@@ -25,8 +53,8 @@ class Login extends Component {
       <div className='login'>
         <form className="login-form" onSubmit={this.handleSubmit}>
           <div>
-            <label for="username">Username</label>
-            <input placeholder='Username' type="text" name='username' id='username' />
+            <label for="email">Email</label>
+            <input placeholder='email' type="text" name='email' id='email' />
           </div>
           <div>
             <label for="password">Password</label>

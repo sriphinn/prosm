@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './AddPost.css';
 import AppContext from '../../AppContext';
+import config from '../../config';
 
 
 class AddPost extends Component {
@@ -11,11 +12,48 @@ class AddPost extends Component {
     error: null,
   };
 
+  handleSubmit = e => {
+    e.preventDefault()
+    const { title, content } = e.target
+    const post = {
+      title: title.value,
+      content: content.value
+    }
+    this.setState({ error: null})
+    fetch(config.API_ENDPOINT + '/posts', {
+      method: 'POST',
+      body: JSON.stringify(post),
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${localStorage.authToken}`
+      }
+    })
+      .then (res => {
+        if (!res.ok){
+          return res.json().then(error => {
+            throw error 
+          })
+        }
+        return res.json()
+      })
+      .then(data => {
+        title.value = ''
+        title.content = ''
+        this.context.addPost(data)
+        this.props.history.push('/collection')
+      })
+      .catch(error => {
+        this.setState({ error })
+      })
+  }
+
+
   handleClickCancel = () => {
     this.props.history.push('/collection')
   };
 
   render() {
+    const { error } = this.state
     return (
       <section className='AddPost'>
         <h3>Let your creativity run wild!
@@ -26,7 +64,7 @@ class AddPost extends Component {
           onSubmit={this.handleSubmit}
         >
           <div className='AddPost__error' role='alert'>
-            {/* {error && <p>{error.message}</p>} */}
+            {error && <p>{error.message}</p>}
           </div>
           <div>
             <label htmlFor='title'>
@@ -42,8 +80,8 @@ class AddPost extends Component {
           </div>
           <div>
             <textarea
-              name='description'
-              id='description'
+              name='content'
+              id='content'
               placeholder='This is your space of infinite possibility. Let your creativity flow...'
             />
           </div>

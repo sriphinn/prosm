@@ -9,15 +9,18 @@ import AddPost from './components/AddPost/AddPost';
 import EditPost from './components/EditPost/EditPost';
 import UserNav from './components/UserNav/UserNav';
 import DailyPrompt from './components/DailyPrompt/DailyPrompt';
+import DeletePost from './components/DeletePost/DeletePost';
 import './App.css';
 import AppContext from './AppContext';
+import config from './config';
 
 class App extends Component {
 
   state = {
     users: [],
     posts: [],
-    status: localStorage.status
+    status: localStorage.status,
+    error: null
   }
 
   setStatus = status => {
@@ -86,6 +89,7 @@ class App extends Component {
             <Route path='/dailyprompt' component={DailyPrompt}/>
             <Route path='/add-post' component={AddPost} />
             <Route path='/edit-post/:id' component={EditPost} />
+            <Route path='/delete-post/:id' component={DeletePost} />
           </AppContext.Provider>
         </main>
         <footer>
