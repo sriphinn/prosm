@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Collection.css';
-import dummyPosts from '../../dummy-posts';
 import PostItem from '../PostItem/PostItem';
 import config from '../../config';
 

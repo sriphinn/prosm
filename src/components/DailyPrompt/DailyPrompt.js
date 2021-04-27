@@ -76,7 +76,7 @@ class DailyPrompt extends Component {
           {randomPrompt}
           <br />
           <br />
-          <img src={this.state.gif} alt='gif' />
+          {this.state.gif ? (<img src={this.state.gif} alt='gif' />) : null}
         </h3>
         <button onClick={this.refreshPage}>
           I'm not feeling inspired. New prompt please!

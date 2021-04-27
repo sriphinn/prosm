@@ -12,7 +12,6 @@ import DailyPrompt from './components/DailyPrompt/DailyPrompt';
 import DeletePost from './components/DeletePost/DeletePost';
 import './App.css';
 import AppContext from './AppContext';
-import config from './config';
 
 class App extends Component {
 
