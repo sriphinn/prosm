@@ -105,5 +105,11 @@ function EditPost(props) {
   )
 }
 
+EditPost.defaultProps = {
+  match: {
+    params: {}
+  }
+}
 
 export default EditPost;
+

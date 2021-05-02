@@ -35,8 +35,7 @@ class DailyPrompt extends Component {
     const queryString = formatQueryParams(giphyParams);
   
     const url = giphyURL + '?' + queryString;
-  
-    console.log(url);
+
   
     fetch(url)
         .then(response => {
@@ -47,17 +46,15 @@ class DailyPrompt extends Component {
         })
         .then(responseJson => this.displayGiphyResults(responseJson))
         .catch(err => {
-            console.log(err)
+            console.error(err)
         });
   };
   
   displayGiphyResults(responseJson) {
-    console.log("displayGiphyResults ran", responseJson)
     let gif = ""
     let k = Math.floor(Math.random()*responseJson.data.length)
         if (responseJson.data[k].images.original) {
           gif = `${responseJson.data[k].images.original.url}` 
-          console.log('gif', gif)
     }
     this.setState({
       gif: gif 
