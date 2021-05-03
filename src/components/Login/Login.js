@@ -67,6 +67,13 @@ class Login extends Component {
             Cancel
           </button>
         </form>
+        <div>
+          <p>
+            Use the login info below to demo the app:<br/>
+            Email: sally@prosm.dev<br/>
+            Password: Password123!
+          </p>
+        </div>
       </div>
     )
   }

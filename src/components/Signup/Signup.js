@@ -37,9 +37,9 @@ class Signup extends Component {
       })
       .then(data => {
         this.context.addPost(data)
-        localStorage.status = 'valid'
-    this.context.setStatus('valid')
-        this.props.history.push('/collection')
+        // localStorage.status = 'valid'
+        // this.context.setStatus('valid')
+        this.props.history.push('/login')
       })
       .catch(error => {
         this.setState({ error })
