@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './UserNav.css';
 import AppContext from '../../AppContext'
+import Logo from '../../images/prosm_logo_black.png'
 
 class UserNav extends Component {
   static contextType = AppContext;
@@ -9,25 +10,29 @@ class UserNav extends Component {
   handleClickLogout = () => {
     this.context.setStatus(null)
     localStorage.clear()
-    this.props.history.push('/')
   }
 
   render() {
     return (
-      <nav>
+      <nav className='navbar'>
         <Link to='/'>
-          <h3>Prosm Logo</h3>
+          <img src={Logo} alt="PROSM logo" />
         </Link>
-        <ul className='nav-links'>
+        <ul className="hamburger">
+          <li className="line"></li>
+          <li className="line"></li>
+          <li className="line"></li>
+        </ul>
+        <ul className='nav'>
           <Link to='/dailyprompt'>
-            <li>Daily Prompt</li>
+            <li className='nav-item'>Daily Prompt</li>
           </Link>
           <Link to='/collection'>
-            <li>Collection</li>
+            <li className='nav-item'>Collection</li>
           </Link>
-          <button className='logout'>
-            <li onClick={this.handleClickLogout}>Log Out</li>
-          </button>
+          <Link to='/'>
+            <li onClick={this.handleClickLogout} className='nav-item'>Log Out</li>
+          </Link>
         </ul>
       </nav>
     )

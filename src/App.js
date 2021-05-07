@@ -92,7 +92,8 @@ class App extends Component {
           </AppContext.Provider>
         </main>
         <footer>
-          &copy; Phinn Sriployrung 2021
+          Prose + Poem = PROSM<br/>
+          <a href="https://phinn.dev/">&copy; Phinn Sriployrung 2021</a>
         </footer>
       </div>
     )

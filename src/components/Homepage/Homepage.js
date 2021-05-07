@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Homepage.css';
+import Image from '../../images/header-image.JPG'
 
 class Homepage extends Component {
   render() {
     return (
       <div className='homepage'>
 
-        <section id='hero'>
-          <h1>PROSM</h1>
-          <p>Poems, Poetry and Prose</p>
+        <section className='header-container'>
+          <img src={Image} alt='notebook and pen with refracted light' />
         </section>
         
-        <section id="about">
-          <p>PROSM is a 30-day challenge to get your creative juices flowing.</p> 
-          <p>Every day you'll be given a prompt to get past the hurdle of a blank page.</p> 
-          <p>Consider this your daily creative writing exercise!</p>
+        <section className="about">
+          <h3>
+            Let your creativity loose with PROSM!
+          </h3>
+          <p>
+            PROSM is an app for poets, artists, copywriters and anyone who wants to form a daily writing practice.<br /> 
+          </p>
         </section>
 
-        <section id='howto'>
-          <ul id='menu'>
-            <li>Each day you'll be given a prompt in the form of a word and an image.</li>
-            <li>Write to your heart's content - a poem, short story or free-flowing prose inspired by the prompt.</li>
-            <li>Add your post to your personal collection and share on social!</li>
-          </ul>
+        <section className='howto'>
+          <p>
+            Each day you'll be given a prompt in the form of a random word and corresponding GIF.<br />
+            Write to your heart's content - a poem, short story, free-flowing prose, marketing copy, or even a journal entry inspired by the prompt.<br />
+          </p>
+          <h3>
+            Start building your own collection of writing now!
+          </h3>
         </section>
 
-        <section id='sigin'>
+        <section id='signin'>
           <button id='sign-in'>
             <Link to='/signup'>Sign Up</Link>
           </button>

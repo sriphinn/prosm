@@ -24,7 +24,7 @@ function EditPost(props) {
         setPosts(data)
       })
       .catch(error => setError({ error }))
-  }, [])
+  }, [props.match.params.id])
 
   const handleSubmit = e => {
     e.preventDefault()

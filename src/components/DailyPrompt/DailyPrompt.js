@@ -68,7 +68,7 @@ class DailyPrompt extends Component {
   render() {
     return (
       <div className='prompt'>
-        <h2>Daily Prompt</h2>
+        <h2>DAILY PROMPT</h2>
         <h3>
           {randomPrompt}
           <br />

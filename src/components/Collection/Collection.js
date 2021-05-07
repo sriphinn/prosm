@@ -35,7 +35,7 @@ class Collection extends Component {
     return (
       <div className='collection'>
         <h2>
-          Your Collection
+          YOUR COLLECTION
         </h2>
         <ul className='collection-list'>
           {this.state.posts.map(post =>

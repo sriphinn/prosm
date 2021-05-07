@@ -53,25 +53,30 @@ class Signup extends Component {
   render() {
     return (
       <div className='signup'>
+        <h2>SIGN UP</h2>
         <form className='signup-form' onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="first_name">First name</label>
-            <input placeholder='First Name' type="text" name='first_name' id='first_name' />
+            <input type="text" name='first_name' id='first_name' />
           </div>
           <div>
             <label htmlFor="last_name">Last name</label>
-            <input type="text" name='last_name' id='last_name' placeholder='Last Name' />
+            <input type="text" name='last_name' id='last_name' />
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="text" name='email' id='email' />
+            <input type="text" name='email' id='email'/>
           </div>
           <div>
             <label htmlFor="password">Password</label>
             <input type="password" name='password' id='password' />
           </div>
+          <p>
+            Password must be at least 8 characters and include a number, 
+            a capital letter, and a special character
+          </p>
           <button type='submit'>
-            Sign Up
+            Submit
           </button>
           {''}
           <button type='cancel-button' onClick={this.handleCancelClick}>
