@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import './AddPost.css';
 import AppContext from '../../AppContext';
 import config from '../../config';
+import TextareaAutosize from 'react-textarea-autosize';
 
 
 class AddPost extends Component {
@@ -56,9 +57,10 @@ class AddPost extends Component {
     const { error } = this.state
     return (
       <section className='AddPost'>
-        <h3>Let your creativity run wild!
+        <p>Let your creativity run wild!
           <br/>
-          Write a poem, a short story, free flowing prose, whatever you like.</h3>
+          Write a poem, a short story, free flowing prose, whatever you like.
+        </p>
         <form
           className='AddPost__form'
           onSubmit={this.handleSubmit}
@@ -78,8 +80,8 @@ class AddPost extends Component {
               required
             />
           </div>
-          <div>
-            <textarea
+          <div className='grow-wrap'>
+            <TextareaAutosize
               name='content'
               id='content'
               placeholder='This is your space of infinite possibility. Let your creativity flow...'
